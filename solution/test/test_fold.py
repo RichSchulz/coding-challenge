@@ -15,5 +15,20 @@ MULTIPLY = (lambda a, b: a * b)
         ([2, 2, 2, 2], 1, MULTIPLY, 16),
     ]
 )
-def test_fold(a, b, c, expected):
+def test_fold_valid_input(a, b, c, expected):
     assert fold(a, b, c) == expected
+
+
+def test_fold_no_list():
+    with pytest.raises(Exception):
+        fold(1, 1, ADD)
+
+
+def test_fold_no_function():
+    with pytest.raises(Exception):
+        fold([1], 1, 1)
+
+
+def test_fold_different_types():
+    with pytest.raises(Exception):
+        fold([1, 2], "3", 6)
