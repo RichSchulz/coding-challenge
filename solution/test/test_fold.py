@@ -8,15 +8,16 @@ MULTIPLY = (lambda a, b: a * b)
 
 
 @pytest.mark.parametrize(
-    ("a", "b", "c", "expected"),
+    ("sequence", "starting_value", "function", "right", "expected"),
     [
-        ([1, 2, 3], 0, ADD, 6),
-        ([0, 0, 0, 0], 5, ADD, 5),
-        ([2, 2, 2, 2], 1, MULTIPLY, 16),
+        ([1, 2, 3], 0, ADD, True, 6),
+        ([0, 0, 0, 0], 5, ADD, True, 5),
+        ([2, 2, 2, 2], 1, MULTIPLY, True, 16),
+        ([1, 2, 3], 0, ADD, True, 6)
     ]
 )
-def test_fold_valid_input(a, b, c, expected):
-    assert fold(a, b, c) == expected
+def test_fold_valid_input(sequence, starting_value, function, right, expected):
+    assert fold(sequence, starting_value, function, right) == expected
 
 
 def test_fold_no_list():
