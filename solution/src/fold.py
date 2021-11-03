@@ -5,10 +5,9 @@ A = TypeVar('A')
 B = TypeVar('B')
 
 
-# TODO: Check if types match, maybe add class for function & custom exception
 def fold(sequence: List[A],
          starting_value: B,
-         function: Callable[[A, B], B],
+         function: Callable[[B, A], B],
          right: bool = True) -> B:
     """Custom implementation of the higher order function fold
     Parameters:
